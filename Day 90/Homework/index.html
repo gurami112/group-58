@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <title>მოვლენები და მოვლენის მსმენელები</title>
+</head>
+<body>
+
+  <button id="helloBtn">დაკლიკე ჩემზე</button>
+
+  <button id="sumBtn">რიცხვების ჯამი</button>
+
+  <script>
+    document.getElementById("helloBtn").addEventListener("click", function() {
+      console.log("Hello World");
+    });
+
+    function calculateSum() {
+      let num1 = Number(prompt("შეიყვანე პირველი რიცხვი:"));
+      let num2 = Number(prompt("შეიყვანე მეორე რიცხვი:"));
+
+      let sum = num1 + num2;
+
+      console.log(sum);
+    }
+
+    document.getElementById("sumBtn").addEventListener("click", calculateSum);
+  </script>
+
+</body>
+</html>
