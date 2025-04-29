@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Image Slider</title>
+</head>
+<body>
+
+  <img id="slider-image" src="img1.jpg" alt="Slider Image" width="600" />
+  <br>
+  
+
+  <button id="prev">Prev</button>
+  <button id="next">Next</button>
+
+  <script>
+    const images = ['img1.jpg', 'img2.jpg', 'img3.jpg']; 
+    let currentIndex = 0; 
+    
+    const imgElement = document.getElementById('slider-image');
+    
+    document.getElementById('prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      imgElement.src = images[currentIndex];
+    });
+    
+    document.getElementById('next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      imgElement.src = images[currentIndex];
+    });
+  </script>
+
+</body>
+</html>

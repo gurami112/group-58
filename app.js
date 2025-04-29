@@ -46,7 +46,7 @@ const createDayFolders = (startDay, endDay) => {
 };  
 
 // Specify the range of days to create
-const startDay = 90;
-const endDay = 101;
+const startDay = 100;
+const endDay = 116;
 
 createDayFolders(startDay, endDay);
