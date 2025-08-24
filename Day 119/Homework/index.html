@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Shop</title>
+  <style>
+    .product {
+      border: 1px solid black;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+    }
+
+    .cart {
+      background-color: gray;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🛒 Cart</h2>
+  <div class="cart" id="cart"></div>
+
+  <main class="products" id="productContainer"></main>
+
+  <script>
+    let products = [];
+
+    fetch('https://fakestoreapi.com/products/')
+      .then(response => response.json())
+      .then(data => {
+        let productContainer = document.getElementById('productContainer');
+        let cart = document.getElementById('cart');
+
+        data.forEach(product => {
+          let productBox = document.createElement('div');
+          productBox.className = 'product';
+
+          let img = document.createElement('img');
+          img.src = product.image;
+
+          let title = document.createElement('h4');
+          title.textContent = product.title;
+
+          let desc = document.createElement('p');
+          desc.textContent = product.description;
+
+          let price = document.createElement('p');
+          price.textContent = '$' + product.price;
+
+          let btn = document.createElement('button');
+          btn.textContent = 'Add to Cart';
+
+          btn.onclick = function() {
+            products.push(product);
+            let item = document.createElement('div');
+
+            let cartImg = document.createElement('img');
+            cartImg.src = product.image;
+
+            let cartTitle = document.createElement('h4');
+            cartTitle.textContent = product.title;
+
+            let cartDesc = document.createElement('p');
+            cartDesc.textContent = product.description;
+
+            let cartPrice = document.createElement('p');
+            cartPrice.textContent = '$' + product.price;
+
+            item.appendChild(cartImg);
+            item.appendChild(cartTitle);
+            item.appendChild(cartDesc);
+            item.appendChild(cartPrice);
+
+            cart.appendChild(item);
+          };
+
+          productBox.appendChild(img);
+          productBox.appendChild(title);
+          productBox.appendChild(desc);
+          productBox.appendChild(price);
+          productBox.appendChild(btn);
+
+          productContainer.appendChild(productBox);
+        });
+      });
+  </script>
+
+</body>
+</html>
